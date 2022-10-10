@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="_css/mapa.css">
+    <style id="most"></style>
+    <style id="box"></style>
+    <title>Mapa Interativo</title>
+</head>
+<body>
+    <header>
+        <h1>Mapa Interativo</h1>
+        <p>clique nos obejetos para ler a descrição</p>
+    </header>
+    <main>
+        <img src="_imagens/mapa3.jpg" alt="mapa" usemap="#mapaImagem" id="mapaImg" onload="redim()">
+        <map name="mapaImagem" id="mapa"></map>
+    </main>
+    <div id="back" onclick="back()"></div>
+    <div id="boxT"></div>
+    <script>
+        const mapaImg = document.getElementById('mapaImg');
+        const mapa = document.getElementById('mapa');
+        const box = document.getElementById('box');
+        const boxT = document.getElementById('boxT');
+        function redim () {
+            let pw = mapaImg.clientWidth/mapaImg.naturalWidth;
+            let ph = mapaImg.clientHeight/mapaImg.naturalHeight;
+            mapa.innerHTML = 
+            `<area shape="rect" coords="${230*pw}, ${32*ph}, ${254*pw}, ${55*ph}" onclick="mostrar(1)" alt="area1">
+            <area shape="rect" coords="${230*pw}, ${65*ph}, ${254*pw}, ${90*ph}" onclick="mostrar(2)" alt="area2">
+            <area shape="rect" coords="${230*pw}, ${100*ph}, ${254*pw}, ${124*ph}" onclick="mostrar(3)" alt="area3"> 
+            <area shape="rect" coords="${222*pw}, ${141*ph}, ${196*pw}, ${165*ph}" onclick="mostrar(4)" alt="area4">  
+            <area shape="rect" coords="${184*pw}, ${141*ph}, ${157*pw}, ${165*ph}" onclick="mostrar(5)" alt="area5">    
+            <area shape="rect" coords="${144*pw}, ${141*ph}, ${117*pw}, ${165*pw}" onclick="mostrar(6)" alt="area6">
+            <area shape="rect" coords="${117*pw}, ${63*ph}, ${185*pw}, ${107*ph}" onclick="mostrar(7)" alt="area7">
+            <area shape="poly" coords="${6*pw}, ${98*ph}, ${28*pw}, ${97*ph}, ${28*pw}, ${50*ph}, ${6*pw}, ${43*ph}, ${6*pw}, ${98*ph}" onclick="mostrar(8)" alt="area8">
+            <area shape="poly" coords="${30*pw}, ${180*ph}, ${98*pw}, ${180*ph}, ${30*pw}, ${112*ph}, ${30*pw}, ${180*ph}" onclick="mostrar(9)" alt="area9">`;
+        }
+        window.addEventListener('resize', redim);
+
+        function mostrar(par) {
+            
+            if(window.location.href.indexOf('#') == -1) {
+                open(window.location.href+'#', '_self');
+            }
+            box.innerHTML = 'div#boxT { display: block; } div#back { filter: blur(1px); }';
+            boxT.innerHTML = `<h1>esse é o elemento ${par}`;
+            box.innerHTML += 'div#back { position: absolute; width: 100vw; height: 100vh; top: 0px; left: 0px;}'
+        }
+
+        function back () {
+            open(window.location.href.replace('#', ''), '_self');
+        }
+        setInterval(() => {
+            let thisURL = window.location.href;
+            if(thisURL.indexOf('#') == -1) {
+                box.innerHTML = '';
+            }
+        },1);
+
+
+        
+    </script>
+</body>
+</html>
