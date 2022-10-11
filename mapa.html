@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mapa.css">
+    <style id="most"></style>
+    <style id="box"></style>
+    <title>Mapa Interativo</title>
+</head>
+<body>
+    
+    <div id="emb">
+        <a href="index.html" id="bmenu"></a>
+        <header>
+            <h1>Mapa Interativo</h1>
+            <p>Clique nos obejetos para ler a descrição</p>
+        </header>
+        <main>
+            <img src="mapa3.png" alt="mapa" usemap="#mapaImagem" id="mapaImg" onload="redim()">
+            <map name="mapaImagem" id="mapa"></map>
+            <section>
+                <h2>Leia as descrições</h2>
+                <p>Faça o que quiser, na ordem que escolher, quantas vezes precisar, por 10 minutos.</p>
+                <ul type="none">
+                    
+                    <li id="vermelho">
+                        <h3>Extravasar</h3>
+                        <ul>
+                            <li>Pulo pesado: Coloque fones e pule mais alto que puder.</li>
+                            <li>Explode problema: Encha um balão, escreva um problema e exploda o balão.</li>
+                            <li>Chute no alvo: Imagine uma pessoa ruim e nocauteie o boneco.</li>
+                        </ul>
+                    </li>
+                    <li id="azul">
+                        <h3>Relaxar</h3>
+                        <ul>
+                            <li>Sauna meditativa: Entre na toca, feche os olhos, relaxe e perceba.</li>
+                            <li>Maca sensorial: Deite na maca, feche os olhos e sinta os estímulos.</li>
+                            <li>Pés nas nuvens: Tire os sapatos, sente confortável e pise nas bolas.</li>
+                        </ul>
+                    </li>
+                    <li id="amarelo">
+                        <h3>Equilibrar</h3>
+                        <ul>
+                            <li>Atividades antiestresse: Faça atividades antiestresse, voçê pode colorir, equilibrar, arrastar, amassar ou apertar coisas para relaxar.</li>
+                        </ul>
+                    </li>
+                    <li id="verde">
+                        <h3>Mini-exposição</h3>
+                        <ul>
+                            <li>Se sobrar um tempo visite nossa mini exposição. Fizemos uma pesquisa sobre os efeitos do estresse no corpo e no cérebro.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </section>
+        </main>
+    </div>
+    <div id="back" onclick="back()"></div>
+    <div id="boxT"></div>
+    <script>
+        const mapaImg = document.getElementById('mapaImg');
+        const mapa = document.getElementById('mapa');
+        const box = document.getElementById('box');
+        const boxT = document.getElementById('boxT');
+        function redim () {
+            let pw = mapaImg.clientWidth/mapaImg.naturalWidth;
+            let ph = mapaImg.clientHeight/mapaImg.naturalHeight;
+            mapa.innerHTML = 
+            `<area shape="rect" coords="${568*pw}, ${85*ph}, ${630*pw}, ${149*ph}" onclick="mostrar(1)" alt="area1">
+            <area shape="rect" coords="${569*pw}, ${179*ph}, ${631*pw}, ${243*ph}" onclick="mostrar(2)" alt="area2">
+            <area shape="rect" coords="${569*pw}, ${274*ph}, ${631*pw}, ${338*ph}" onclick="mostrar(3)" alt="area3"> 
+            <area shape="rect" coords="${453*pw}, ${386*ph}, ${520*pw}, ${451*ph}" onclick="mostrar(4)" alt="area4">  
+            <area shape="rect" coords="${332*pw}, ${386*ph}, ${398*pw}, ${450*ph}" onclick="mostrar(5)" alt="area5">    
+            <area shape="rect" coords="${212*pw}, ${385*ph}, ${278*pw}, ${449*pw}" onclick="mostrar(6)" alt="area6">
+            <area shape="rect" coords="${266*pw}, ${182*ph}, ${450*pw}, ${302*ph}" onclick="mostrar(7)" alt="area7">
+            <area shape="poly" coords="${16*pw}, ${120*ph}, ${75*pw}, ${140*ph}, ${76*pw}, ${266*ph}, ${16*pw}, ${269*ph}, ${16*pw}, ${120*ph}" onclick="mostrar(8)" alt="area8">
+            <area shape="poly" coords="${731*pw}, ${295*ph}, ${548*pw}, ${485*ph}, ${731*pw}, ${485*ph}, ${731*pw}, ${295*ph}" onclick="mostrar(9)" alt="area9">`;
+        }
+        window.addEventListener('resize', redim);
+
+        function mostrar(par) {
+            
+            if(window.location.href.indexOf('#') == -1) {
+                open(window.location.href+'#', '_self');
+            }
+            box.innerHTML = 'div#boxT { display: block; }';
+            box.innerHTML += 'div#back { position: absolute; width: 100vw; height: 100vh; top: 0px; left: 0px;} div#emb {filter: blur(2px)}';
+            switch (par) {
+                case 1:
+                    boxT.innerHTML = `<h1>Pulo pesado</h1> <p>Você será convidado a colocar um fone de ouvido com música pesada e pular o mais alto que puder.</p>`;
+                    break;
+                case 2:
+                    boxT.innerHTML = `<h1>Exploda problema</h1> <p>Você deverá escrever um problema no balão para depois estourá-lo.</p>`;
+                    break;
+                case 3:
+                    boxT.innerHTML = `<h1>Chute no alvo</h1> <p>A proposta é imaginar alguém terrível, mirar e chutar o saco de pancadas.</p>`;
+                    break;
+                case 4:
+                    boxT.innerHTML = `<h1>Sauna meditativa</h1> <p>Você deverá entrar em uma barraca individual climatizada e com som.</p>`;
+                    break;
+                case 5:
+                    boxT.innerHTML = `<h1>Maca sensorial</h1> <p>Deitado em uma maca você receberá estímulos relaxante no corpo.</p>`;
+                    break;
+                case 6:
+                    boxT.innerHTML = `<h1>Pés nas nuvens</h1> <p>Faça automassegem nos seus pés usando instrumentos de massagem.</p>`;
+                    break;
+                case 7:
+                    boxT.innerHTML = `<h1>Ativades antiestresse</h1> <p>Mesas com atividades antiestresse ao seu dispor, faça desenhos, brinque com areia, massinha, pop-its, pedras para equilibrar, etc...</p>`;
+                    break;
+                case 8:
+                    boxT.innerHTML = `<h1>Mini exposição</h1> <p>Voçê pode ler a pesquisa que fizemos sobre os efeitos do estresse no corpo e na mente.</p>`;
+                    break;
+                case 9:
+                    boxT.innerHTML = `<h1>Camarim</h1> <p>Reservado aos organizadores.</p>`;
+                    break;
+                default: 
+                    alert('algo deu errado');
+            }
+        }
+
+        function back () {
+            open(window.location.href.replace('#', ''), '_self');
+        }
+        setInterval(() => {
+            let thisURL = window.location.href;
+            if(thisURL.indexOf('#') == -1) {
+                box.innerHTML = '';
+            }
+        },1);
+
+        setInterval(() => {
+            redim();
+        }, 1000);
+
+
+        
+    </script>
+</body>
+</html>
