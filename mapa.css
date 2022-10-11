@@ -6,21 +6,26 @@
 }
 
 body {
+    
+    height: 100vh;
+    background-image: linear-gradient(45deg, rgb(194, 25, 123), rgb(116, 196, 243));
+    background-size: 300%;
+    background-position: center 35%;
+    background-attachment: fixed;
+    filter: blur();
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div#emb {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    background-image: linear-gradient(45deg, rgb(182, 33, 202), rgb(72, 134, 248));
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    filter: blur();
 }
 
 div#boxT {
     position: absolute;
     display: none;
-    width: 300px;
+    width: 60vw;
     padding: 20px;
     background-color: white;
     border-radius: 20px;
@@ -29,11 +34,24 @@ div#boxT {
     transform: translate(-50%, -50%);
     
 }
+
+    div#boxT h1 {
+        text-align: center;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
+
+    div#boxT p {
+        text-align: center;
+        padding: 10px 0px;
+    }
 header {
     text-align: center;
     flex-shrink: 0;
+    padding: 0px 10vw;
 }
     header h1 {
+        padding: 0px 5vw;
         margin: 0.67em auto;
         color: rgb(255, 255, 255);
         text-shadow: 1px 1px 1px rgb(0, 0, 0);
@@ -48,13 +66,64 @@ header {
 main {
     text-align: center;
     flex-shrink: 0;
+    width: 100%;
 }
     main img {
         width: 80vw;
         box-shadow: -2.5vw 2.5vw 2.5vw rgba(0, 0, 0, 0.3);
+        
     }
 
     main map area {
         cursor: pointer;
     }
+
+a#bmenu {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 15px;
+    left: 15px;
+    border-radius: 50%;
+    background-image: url("main.png");
+    background-position: center;
+    background-size: cover;
+
+}
+
+section {
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent, white, white, white, white, white, white);
+    padding-top: 120px;
+    margin-top: 10px;
+}
+
+section h2 {
+    color: rgb(0, 0, 0);
+    margin: 0px 0px 20px 0px;
+}
+
+section > p {
+    padding: 0px 10vw;
+}
+
+section > ul {
+    text-align: start ;
+    padding: 0px 10vw 50px 10vw;
+    margin: 40px 0px 0px 0px;
+}
+
+section ul > li {
+    padding: 0px 0px 10px 0px;
+}
+
+section ul li h3 {
+    margin: 0px 0px 15px 0px;
+}
+
+section ul li ul {
+    padding-left: 5vw;
+    list-style: none;
+}
+
 

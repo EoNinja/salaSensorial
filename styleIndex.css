@@ -18,6 +18,7 @@ body {
 
     header {
         flex-shrink: 0;
+        padding: 0px 10vw;
     }
         header h1 {
             text-align: center;
@@ -37,27 +38,28 @@ body {
     }
         nav ul {
             list-style: none;
-            padding: 0;
+            padding: 0px 10vw;
         }
 
             nav ul li {
+                max-width: 300px;
                 text-align: center;
                 margin: 25px 0px;
             }
 
                 nav ul li button {
-                    width: 300px;
-                    height: 40px;
+                    width: 100%;
+                    min-height: 40px;
                     border-radius: 10px;
                     border: none;
                     background-color: var(--buttonColor);
                     color: white;
                     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
                 }
 
             nav ul li.mat  {
-                width: 300px;
-                padding: 0px;
+                max-width: 300px;
                 margin-top: 25px;
             }
 
